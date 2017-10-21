@@ -1,0 +1,6 @@
+Django==1.11.6
+dj-database-url==0.4.2
+
+djangorestframework==3.7.1
+
+psycopg2==2.7.3.1
