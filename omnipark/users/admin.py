@@ -16,7 +16,8 @@ class UserAdmin(UserAdmin):
             'fields': ('is_active', 'is_superuser')
         }),
         (_('Profile'), {
-            'fields': (('first_name', 'last_name'),)
+            'fields': (('first_name', 'last_name'),
+                       'vop_card_number', 'vd_card_number',)
         }),
     )
     add_fieldsets = (

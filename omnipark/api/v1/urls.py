@@ -12,3 +12,8 @@ from .parking.views import SpotsViewSet, BookingsViewSet  # noqa
 
 router.register(r'spots', SpotsViewSet, base_name='spots')
 router.register(r'bookings', BookingsViewSet, base_name='bookings')
+
+# Offers
+from .offers.views import OffersViewSet  # noqa
+
+router.register(r'offers', OffersViewSet, base_name='offers')

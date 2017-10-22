@@ -33,3 +33,25 @@ class Merchant(models.Model):
                     }]
                 }
             )
+
+
+class Offer(models.Model):
+    merchant = models.ForeignKey('Merchant', related_name='offers', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+    community_code = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class OfferEvent(models.Model):
+    offer = models.ForeignKey('Offer', related_name='events', on_delete=models.CASCADE)
+
+
+class OfferEventField(models.Model):
+    event = models.ForeignKey('OfferEvent', related_name='fields', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
