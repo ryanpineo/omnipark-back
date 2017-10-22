@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.contrib.gis import forms
 from django.contrib.gis.admin import GeoModelAdmin
 
+from fsm_admin.mixins import FSMTransitionMixin
+
 from .models import Spot, Booking
 
 
@@ -14,8 +16,9 @@ class SpotAdmin(GeoModelAdmin):
     form = SpotAdminForm
 
 
-class BookingAdmin(admin.ModelAdmin):
+class BookingAdmin(FSMTransitionMixin, admin.ModelAdmin):
     list_display = ('id', 'spot', 'start', 'end', 'status',)
+    fsm_field = ['valid_status']
 
 
 admin.site.register(Spot, SpotAdmin)

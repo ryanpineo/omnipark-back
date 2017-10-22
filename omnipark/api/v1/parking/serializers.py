@@ -27,3 +27,9 @@ class BookingSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         validated_data['status'] = BookingStatus.ACTIVE
         return super().create(validated_data)
+
+
+class BookingExtendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = ('id', 'end',)

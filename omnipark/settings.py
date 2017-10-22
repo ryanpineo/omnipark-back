@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'push_notifications',
     'nested_admin',
+    'fsm_admin',
 
     'django.contrib.admin',
     'django.contrib.auth',
