@@ -15,7 +15,7 @@ SECRET_KEY = '6vvl31l*slr&!qij#*pk*kx0f1ys1v@a1k9==&lhs=-(o1agv5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Auth
 AUTH_USER_MODEL = 'users.User'
@@ -24,10 +24,13 @@ AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
     'omnipark.api.apps.ApiConfig',
+    'omnipark.merchants.apps.MerchantsConfig',
+    'omnipark.parking.apps.ParkingConfig',
     'omnipark.users.apps.UsersConfig',
 
     'rest_framework',
     'rest_framework.authtoken',
+    'push_notifications',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -35,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +74,7 @@ WSGI_APPLICATION = 'omnipark.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.parse('postgres://ryan:@localhost/omnipark'),
+    'default': dj_database_url.parse('postgis://ryan:@localhost/omnipark'),
 }
 
 
@@ -123,3 +127,15 @@ REST_FRAMEWORK = {
     'SEARCH_PARAM': 'q',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
+
+# Push Notifications
+PUSH_NOTIFICATIONS_SETTINGS = {
+        "APNS_CERTIFICATE": "/home/ryan/projects/tsl/hackathons/2017-money2020/apns.pem",
+        "APNS_TOPIC": "com.silverlogic.OmniPark",
+}
+
+# Visa
+VISA_CERT = '/home/ryan/projects/tsl/hackathons/2017-money2020/cert.pem'
+VISA_PRIVKEY = '/home/ryan/projects/tsl/hackathons/2017-money2020/key_65f7f255-9b15-4492-9c66-12d46ebd63cd.pem'
+VISA_USERNAME = os.environ['VISA_USERNAME']
+VISA_PASSWORD = os.environ['VISA_PASSWORD']

@@ -63,6 +63,9 @@ class User(PermissionsMixin, AbstractBaseUser):
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
 
+    vop_card_number = models.CharField(max_length=100, blank=True)
+    vd_card_number = models.CharField(max_length=100, blank=True)
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
